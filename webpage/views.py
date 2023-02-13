@@ -12,4 +12,10 @@ def recc(request):
 
 def phish1(request):
     return render(request, 'phish1.html', {})
+
+def phish1a(request):
+    return render(request, 'phish1a.html', {})
+
+def phish2(request):
+    return render(request, 'phish2.html', {})
 # Create your views here.
