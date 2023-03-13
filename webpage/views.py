@@ -16,6 +16,15 @@ def phish1(request):
 def phish1a(request):
     return render(request, 'phish1a.html', {})
 
+def phish1b(request):
+    return render(request, 'phish1b.html', {})
+
+def phish1c(request):
+    return render(request, 'phish1c.html', {})
+
 def phish2(request):
     return render(request, 'phish2.html', {})
+
+def phish3(request):
+    return render(request, 'phish3.html', {})
 # Create your views here.

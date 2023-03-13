@@ -11,16 +11,18 @@
 
     <form>
         <p>
-           <input type="checkbox" name="sender" /> Is the identity of the sender of this email clear?
+        <hr/>
+           <input type="checkbox" name="sender" value="wrong"/> Is the identity of the sender of this email clear?
            <br />
-           <input type="checkbox" name="main" /> Does the text in the main body project a sense of urgency?
+           <input type="checkbox" name="main" value="right"/> Does the text in the main body project a sense of urgency?
            <br />
-           <input type="checkbox" name="date" /> Say the message was just sent to you today. Does the time in which it was sent matter?
+           <input type="checkbox" name="date" value="wrong"/> Say the message was just sent to you today. Does the time in which it was sent matter?
            <br />
-           <input type="checkbox" name="link" /> Is it okay to click on the link provided?
+           <input type="checkbox" name="link" value="right"/> Is it okay to click on the link provided?
            <br />
         </p>
-        <button type="submit" formaction='phish1a'>Next Page!</button>
+        <button type="submit" formaction='phish1a'>Check Answer/Move to Next!</button>
+        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
         <!-- <input type="submit" name="submit" value="Next Page!" /> -->
     </form>
     </body>
