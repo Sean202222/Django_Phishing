@@ -9,16 +9,26 @@
     
     <h2>Examine the above Sample Email Message and Select the boxes which correspond to the Phishing Threats present in the message.</h2>
 
+    <!--<form method="POST" action="{% url 'phish1' %}">-->
+        <!--{% csrf_token %}-->
     <form>
         <p>
         <hr/>
-           <input type="checkbox" name="sender" value="wrong"/> Is the identity of the sender of this email clear?
+           <div class="form-group">
+           <input type="checkbox" name="sender" class="form control" value="wrong"/> Is the identity of the sender of this email clear?
+           </div>
            <br />
-           <input type="checkbox" name="main" value="right"/> Does the text in the main body project a sense of urgency?
+           <div class="form-group">
+           <input type="checkbox" name="main" class="form control" value="right"/> Does the text in the main body project a sense of urgency?
+            </div>
            <br />
-           <input type="checkbox" name="date" value="wrong"/> Say the message was just sent to you today. Does the time in which it was sent matter?
+           <div class="form-group">
+           <input type="checkbox" name="date" class="form control" value="wrong"/> Say the message was just sent to you today. Does the time in which it was sent matter?
+            </div>
            <br />
-           <input type="checkbox" name="link" value="right"/> Is it okay to click on the link provided?
+           <div class="form-group">
+           <input type="checkbox" name="link" class="form control" value="right"/> Is it okay to click on the link provided?
+            </div>
            <br />
         </p>
         <button type="submit" formaction='phish1a'>Check Answer/Move to Next!</button>

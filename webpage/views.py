@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from .models import Sms1
+#from .forms import Sms1Form
 
 def index(request):
     return render(request, 'index.html', {})
@@ -11,7 +12,13 @@ def recc(request):
     return render(request, 'recc.html', {})
 
 def phish1(request):
-    return render(request, 'phish1.html', {})
+    #if request.method == "POST":
+        #form = Sms1Form(request.POST or None)
+        #if form.is_valid():
+            #form.save()
+        #return render(request, 'phish1a.html', {})
+    #else:
+        return render(request, 'phish1.html', {})
 
 def phish1a(request):
     return render(request, 'phish1a.html', {})
