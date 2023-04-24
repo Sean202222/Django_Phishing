@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Sms1
 #from .forms import Sms1Form
 
 def index(request):
+    all_members = Sms1.objects.all
     return render(request, 'index.html', {})
 
 def about(request):
@@ -12,12 +13,13 @@ def recc(request):
     return render(request, 'recc.html', {})
 
 def phish1(request):
-    #if request.method == "POST":
-        #form = Sms1Form(request.POST or None)
-        #if form.is_valid():
-            #form.save()
-        #return render(request, 'phish1a.html', {})
-    #else:
+    if request.method == "POST":
+        form = Sms1Form(request.POST or None)
+        if form.is_valid():
+            form.save()
+        #messages.success(request, ('Next!'))
+        return redirect('phish1a')
+    else:
         return render(request, 'phish1.html', {})
 
 def phish1a(request):
