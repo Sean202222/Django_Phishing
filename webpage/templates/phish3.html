@@ -4,7 +4,35 @@
     </head>
     <body>
         <h1>Welcome to Phishing Game 3</h1>
-        <h2>Play and listen to the Audio File below and identify if it is a Vishing Call or not.</h2>
+        <h2>Play and listen to the Audio Files below and identify which ones are Vishing Calls.</h2>
+        {% load static %}
+        <audio controls>
+            <source src="{% static 'webpage/audio/Phish3Call1.mp4' %}" type="audio/mpeg">
+              Your browser does not support the audio tag.
+        </audio>
+        <br>
+        <input type="radio" id="html" name="Lo" value="HTML">
+        <label for="html">Yes</label>
+        
+        <input type="radio" id="css" name="Lo" value="CSS">
+        <label for="css">No</label>
+        <input type="submit" name="submit" value="Submit" />
+
+        <hr>
+
+        {% load static %}
+        <audio controls>
+            <source src="{% static 'webpage/audio/Phish3Call1.mp4' %}" type="audio/mpeg">
+              Your browser does not support the audio tag.
+        </audio>
+        <br>
+        <input type="radio" id="html" name="La" value="HTML">
+        <label for="html">Yes</label>
+        
+        <input type="radio" id="css" name="La" value="CSS">
+        <label for="css">No</label>
+        <input type="submit" name="submit" value="Submit" />
+        <hr>
         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
     </body>
 </html>
