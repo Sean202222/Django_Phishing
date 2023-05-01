@@ -10,19 +10,38 @@
         <img class="imgPhishEmail" src="{% static 'webpage/images/phishtext.jpg' %}" alt="Phishing Email" title="An example of Phishing from an email message">
     
     <h2>Examine the above Sample Email Message and Select the boxes which correspond to the Phishing Threats present in the message.</h2>
-
-    <form >
+    {% if mesgs%}
+    <h1>Tips:</h1>
+    {% endif%}
+    <h4>{{mesgs|length}}</h4>
+    {% for mesg in mesgs%}
+    <div class="container">
+        <h4>{{mesg.sender}}</h4>
+        <h4>{{mesg.main}}</h4>
+    </div>
+    {% endfor%}
+    <form method="POST" action="{% url 'index' %}">
+        {% csrf_token %}
         <p>
-           <input type="checkbox" name="sender" /> A deadline is featured in the message.
+        <hr/>
+            <div class="form-check">
+           <input type="checkbox" name="sender" class="form-check-input" value="wrong"/> A deadline is featured in the message.
+            </div>
            <br />
-           <input type="checkbox" name="main" /> The message appears to have been sent by a legitimite company.
+           <div class="form-check">
+           <input type="checkbox" name="main" class="form-check-input" value="wrong"/> The message appears to have been sent by a legitimite company.
+           </div>
            <br />
-           <input type="checkbox" name="date" /> You are being asked with urgency to click the provided link.
+           <div class="form-check">
+           <input type="checkbox" name="date" class="form-check-input" value="right"/> The message is trying to panic you into clicking the link.
+           </div>
            <br />
-           <input type="checkbox" name="link" /> The sender is asking for personal information in the message.
+           <div class="form-check">
+           <input type="checkbox" name="link" class="form-check-input" value="right"/> The sender is asking for personal information in the message.
+           </div>
            <br />
         </p>
-        <button type="submit" formaction='phish1c'>Check Answer/Move to Next!</button>
+        <button type="submit" formaction='phish1b'>Check Answer/Move to Next!</button>
         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
         <!--<input type="submit" name="submit" value="Next Page!" />-->
     </form>

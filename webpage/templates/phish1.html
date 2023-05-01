@@ -8,7 +8,16 @@
         <img class="imgPhishEmail" src="{% static 'webpage/images/phishbasicemail-c.jpg' %}" alt="Phishing Email" title="An example of Phishing from an email message">
     
     <h2>Examine the above Sample Email Message and Select the boxes which correspond to the Phishing Threats present in the message.</h2>
-
+        {% if mesgs%}
+        <h1>Tips:</h1>
+        {% endif%}
+        <h4>{{mesgs|length}}</h4>
+        {% for mesg in mesgs%}
+        <div class="container">
+            <h4>{{mesg.sender}}</h4>
+            <h4>{{mesg.date}}</h4>
+        </div>
+        {% endfor%}
     <form method="POST" action="{% url 'index' %}">
         {% csrf_token %}
         <p>
@@ -31,7 +40,7 @@
             </div>
            <br />
         </p>
-        <button type="submit" formaction='phish1a'>Check Answer/Move to Next!</button>
+        <button type="submit" formaction='phish1'>Check Answer/Move to Next!</button>
         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
         <!-- <input type="submit" name="submit" value="Next Page!" /> -->
     </form>

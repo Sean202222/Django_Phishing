@@ -9,18 +9,38 @@
         <img class="imgPhishEmail" src="{% static 'webpage/images/lotteryphish.png' %}" alt="Phishing Email" title="An example of Phishing from an email message">
     
     <h2>Examine the above Sample Email Message and Select the boxes which correspond to the Phishing Threats present in the message.</h2>
-
-    <form >
+    {% if mesgs%}
+    <h1>Tips:</h1>
+    {% endif%}
+    <h4>{{mesgs|length}}</h4>
+    {% for mesg in mesgs%}
+    <div class="container">
+        <h4>{{mesg.sender}}</h4>
+        <h4>{{mesg.link}}</h4>
+    </div>
+    {% endfor%}
+    <form method="POST" action="{% url 'index' %}">
+        {% csrf_token %}
         <p>
-           <input type="checkbox" name="sender" /> There are no previous messages from this sender.
+        <hr/>
+            <div class="form-check">
+           <input type="checkbox" name="sender" class="form-check-input" value="wrong"/> There are no previous messages from this sender.
+            </div>
            <br />
-           <input type="checkbox" name="main" /> The identity of the sender of this message is anonymous.
+           <div class="form-check">
+           <input type="checkbox" name="main" class="form-check-input" value="right"/> The identity of the sender of this message is anonymous.
+           </div>
            <br />
-           <input type="checkbox" name="date" /> The Spelling/Grammar errors are evidence of Phishing.
+           <div class="form-check">
+           <input type="checkbox" name="date" class="form-check-input" value="right"/> The Spelling/Grammar errors are evidence of Phishing.
+           </div>
            <br />
-           <input type="checkbox" name="link" /> It is okay to click "Yes".
+           <div class="form-check">
+           <input type="checkbox" name="link" class="form-check-input" value="wrong"/> It is okay to click "Yes".
+           </div>
            <br />
         </p>
+        <button type="submit" formaction='phish1c'>Check Answer/Finish!</button>
         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
         <!--<input type="submit" name="submit" value="Next Page!" />-->
     </form>
