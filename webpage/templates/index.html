@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Homepage</h1>
+{% load static %}
+<body style="height: 100%; background-size: cover; background-image:url('{% static 'webpage/images/phishingBkround.png'%}')">
+<div class="over-image">
+    <h1>"Phish-Off" - Don't Get Hooked!</h1>
+<!-- <img class="imgPhishEmail" src="{% static 'webpage/images/phishingBkround.png' %}"> -->
 <p><h3>Below are Links to the Different <b>Phishing Interactive Games</b></h3>
     <ul>
         <li><a href="{% url 'phish1' %}">Phishing Game 1 [Email/SMS]</a></li>
@@ -9,4 +13,5 @@
         <li><a href="{% url 'phish3' %}">Phishing Game 3 [Voice Call/Vishing]</a></li>
     </ul>   
 </p>
+</div>
 {% endblock %}

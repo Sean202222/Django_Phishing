@@ -18,11 +18,11 @@ def phish1(request):
         print(form_detail)
         if 'wrong' in [val for val in form_detail.values()]:
             if 'sender' and 'date' in form_detail.keys():
-                param = {'mesgs': [{"sender": "Clearly check if you can identify the sender!"}, {"date": "Clearly check that the date matters!"}]}
+                param = {'mesgs': [{"sender": "ITS Help Desk is the subject and not the sender!"}, {"date": "Notice how the message says before 48 hours!"}]}
             elif 'sender' in form_detail.keys():
-                param = {'mesgs': [{'sender': 'Clearly check if you can identify the sender!'}]}
+                param = {'mesgs': [{'sender': 'ITS Help Desk is the subject and not the sender!'}]}
             elif 'date' in form_detail.keys():
-                param = {'mesgs': [{'date': 'Clearly check that the date matters!'}]}
+                param = {'mesgs': [{'date': 'Notice how the message says before 48 hours!'}]}
                 
             return render(request, 'phish1.html', param)
         
@@ -40,11 +40,11 @@ def phish1a(request):
         print(form_detail)
         if 'wrong' in [val for val in form_detail.values()]:
             if 'date' and 'link' in form_detail.keys():
-                param = {'mesgs': [{"date": "Clearly check if you can identify the sender!"}, {"link": "Clearly check that the date matters!"}]}
+                param = {'mesgs': [{"date": "Notice that the subject of the email says important!"}, {"link": "Why are you being addressed as network user in the message?"}]}
             elif 'date' in form_detail.keys():
-                param = {'mesgs': [{'date': 'Notice that the subject of the email says "important"!'}]}
+                param = {'mesgs': [{'date': 'Notice that the subject of the email says important!'}]}
             elif 'link' in form_detail.keys():
-                param = {'mesgs': [{'link': 'Clearly check that the date matters!'}]}
+                param = {'mesgs': [{'link': 'Why are you being addressed as network user in the message?'}]}
                 
             return render(request, 'phish1a.html', param)
         
@@ -62,11 +62,11 @@ def phish1b(request):
         print(form_detail)
         if 'wrong' in [val for val in form_detail.values()]:
             if 'sender' and 'main' in form_detail.keys():
-                param = {'mesgs': [{"sender": "Clearly check if you can identify the sender!"}, {"main": "Clearly check that the date matters!"}]}
+                param = {'mesgs': [{"sender": "Notice that you are being asked for your PIN Number!"}, {"main": "They mention Bank of America but are they actually representing the organisation?"}]}
             elif 'sender' in form_detail.keys():
-                param = {'mesgs': [{'sender': 'Notice that the subject of the email says "important"!'}]}
+                param = {'mesgs': [{'sender': 'Notice that you are being asked for your PIN Number!'}]}
             elif 'main' in form_detail.keys():
-                param = {'mesgs': [{'main': 'Clearly check that the date matters!'}]}
+                param = {'mesgs': [{'main': 'They mention Bank of America but are they actually representing the organisation?'}]}
                 
             return render(request, 'phish1b.html', param)
         
@@ -84,11 +84,11 @@ def phish1c(request):
         print(form_detail)
         if 'wrong' in [val for val in form_detail.values()]:
             if 'sender' and 'link' in form_detail.keys():
-                param = {'mesgs': [{"sender": "Clearly check if you can identify the sender!"}, {"link": "Clearly check that the date matters!"}]}
+                param = {'mesgs': [{"sender": "Unknown Number?"}, {"link": "Notice that there is no option to say NO!"}]}
             elif 'sender' in form_detail.keys():
-                param = {'mesgs': [{'sender': 'Notice that the subject of the email says "important"!'}]}
+                param = {'mesgs': [{'sender': 'Unknown Number?'}]}
             elif 'link' in form_detail.keys():
-                param = {'mesgs': [{'link': 'Clearly check that the date matters!'}]}
+                param = {'mesgs': [{'link': 'Notice that there is no option to say NO!'}]}
                 
             return render(request, 'phish1c.html', param)
         
@@ -101,7 +101,23 @@ def phish1c(request):
         return render(request, 'phish1c.html', {})
 
 def phish2(request):
-    return render(request, 'phish2.html', {})
+    if request.method == "POST":
+        form_detail = request.POST
+        print(form_detail)
+        score = 0
+        if 'right' in [val for val in form_detail.values()]:
+            score += 1
+            param = {'mesgs': [{"right": "You got right"}]}
+        elif 'wrong' in [val for val in form_detail.values()]:
+            score += 0
+            param = {'mesgs': [{"wrong": "You got wrong"}]}
+        elif 'right' and 'wrong' not in [val for val in form_detail.values()]:
+            score += 0
+            param = {'mesgs': [{"Don't leave any blank"}]}
+        return render(request, 'phish2.html', param)
+    # print("You got " + str(score) + "/" + str(len(form_detail)) + "correct out of 9")
+    else:
+        return render(request, 'phish2.html', {})
 
 def phish3(request):
     return render(request, 'phish3.html', {})

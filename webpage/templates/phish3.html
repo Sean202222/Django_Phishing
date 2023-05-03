@@ -4,91 +4,95 @@
     </head>
     <body>
         <h1>Welcome to Phishing Game 3</h1>
-        <h2>Play and listen to the Audio Files below and identify which ones are Vishing Calls.</h2>
-        {% load static %}
-        <audio controls>
-            <source src="{% static 'webpage/audio/Phish3Call1.mp4' %}" type="audio/mpeg">
-              Your browser does not support the audio tag.
-        </audio>
-        <br>
-        <input type="radio" id="html" name="Lo" value="true">
-        <label for="html">Yes</label>
-        
-        <input type="radio" id="css" name="Lo" value="false">
-        <label for="css">No</label>
 
-        <hr>
+        <form method="POST" action="{% url 'index' %}">
+            {% csrf_token %}
+            <h2>Play and listen to the Audio Files below and identify which ones are Vishing Calls.</h2>
+                {% load static %}
+                <audio controls>
+                    <source src="{% static 'webpage/audio/Phish3Call1.mp4' %}" type="audio/mpeg">
+                      Your browser does not support the audio tag.
+                </audio>
+                <br>
+                <input type="radio" id="html" name="Lo" value="true">
+                <label for="html">Yes</label>
+                
+                <input type="radio" id="css" name="Lo" value="false">
+                <label for="css">No</label>
 
-        {% load static %}
-        <audio controls>
-            <source src="{% static 'webpage/audio/Phish3 Call2.mp4' %}" type="audio/mpeg">
-              Your browser does not support the audio tag.
-        </audio>
-        <br>
-        <input type="radio" id="html" name="La" value="true">
-        <label for="html">Yes</label>
-        
-        <input type="radio" id="css" name="La" value="false">
-        <label for="css">No</label>
+                <hr>
 
-        <hr>
+                {% load static %}
+                <audio controls>
+                    <source src="{% static 'webpage/audio/Phish3 Call2.mp4' %}" type="audio/mpeg">
+                      Your browser does not support the audio tag.
+                </audio>
+                <br>
+                <input type="radio" id="html" name="La" value="true">
+                <label for="html">Yes</label>
+                
+                <input type="radio" id="css" name="La" value="false">
+                <label for="css">No</label>
 
-        {% load static %}
-        <audio controls>
-            <source src="{% static 'webpage/audio/Phish3 Call3.mp4' %}" type="audio/mpeg">
-              Your browser does not support the audio tag.
-        </audio>
-        <br>
-        <input type="radio" id="html" name="Le" value="false">
-        <label for="html">Yes</label>
-        
-        <input type="radio" id="css" name="Le" value="true">
-        <label for="css">No</label>
+                <hr>
 
-        <hr>
+                {% load static %}
+                <audio controls>
+                    <source src="{% static 'webpage/audio/Phish3 Call3.mp4' %}" type="audio/mpeg">
+                      Your browser does not support the audio tag.
+                </audio>
+                <br>
+                <input type="radio" id="html" name="Le" value="false">
+                <label for="html">Yes</label>
+                
+                <input type="radio" id="css" name="Le" value="true">
+                <label for="css">No</label>
 
-        {% load static %}
-        <audio controls>
-            <source src="{% static 'webpage/audio/Phish3Call4.mp4' %}" type="audio/mpeg">
-              Your browser does not support the audio tag.
-        </audio>
-        <br>
-        <input type="radio" id="html" name="Lp" value="true">
-        <label for="html">Yes</label>
-        
-        <input type="radio" id="css" name="Lp" value="false">
-        <label for="css">No</label>
+                <hr>
 
-        <hr>
+                {% load static %}
+                <audio controls>
+                    <source src="{% static 'webpage/audio/Phish3Call4.mp4' %}" type="audio/mpeg">
+                      Your browser does not support the audio tag.
+                </audio>
+                <br>
+                <input type="radio" id="html" name="Lp" value="true">
+                <label for="html">Yes</label>
+                
+                <input type="radio" id="css" name="Lp" value="false">
+                <label for="css">No</label>
 
-        {% load static %}
-        <audio controls>
-            <source src="{% static 'webpage/audio/Phish3Call5.mp4' %}" type="audio/mpeg">
-              Your browser does not support the audio tag.
-        </audio>
-        <br>
-        <input type="radio" id="html" name="Lg" value="false">
-        <label for="html">Yes</label>
-        
-        <input type="radio" id="css" name="Lg" value="true">
-        <label for="css">No</label>
+                <hr>
 
-        <hr>
+                {% load static %}
+                <audio controls>
+                    <source src="{% static 'webpage/audio/Phish3Call5.mp4' %}" type="audio/mpeg">
+                      Your browser does not support the audio tag.
+                </audio>
+                <br>
+                <input type="radio" id="html" name="Lg" value="false">
+                <label for="html">Yes</label>
+                
+                <input type="radio" id="css" name="Lg" value="true">
+                <label for="css">No</label>
 
-        {% load static %}
-        <audio controls>
-            <source src="{% static 'webpage/audio/Phish3Call6.mp4' %}" type="audio/mpeg">
-              Your browser does not support the audio tag.
-        </audio>
-        <br>
-        <input type="radio" id="html" name="Lgo" value="true">
-        <label for="html">Yes</label>
-        
-        <input type="radio" id="css" name="Lgo" value="false">
-        <label for="css">No</label>
+                <hr>
 
-        <hr>
-        <input type="submit" name="submit" value="Submit" />
-        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
+                {% load static %}
+                <audio controls>
+                    <source src="{% static 'webpage/audio/Phish3Call6.mp4' %}" type="audio/mpeg">
+                      Your browser does not support the audio tag.
+                </audio>
+                <br>
+                <input type="radio" id="html" name="Lgo" value="true">
+                <label for="html">Yes</label>
+                
+                <input type="radio" id="css" name="Lgo" value="false">
+                <label for="css">No</label>
+
+                <hr>
+            <input type="submit" name="submit" value="Submit" />
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
+        </form>
     </body>
 </html>

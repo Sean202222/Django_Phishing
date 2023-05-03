@@ -1,15 +1,23 @@
 h1 {
     color:blue;
+    text-align: center;
 }
 
 h3 {
-    color: orange;
+    color: rgb(13, 255, 0);
 }
 
 ul {
+    color: rgb(242, 0, 255);
     font-size: 200%;
+}
+
+.over-image{
+    opacity: 0.9;
+    background-color: rgb(237, 72, 72);
 }
 
 .imgPhishEmail{
 
 }
+

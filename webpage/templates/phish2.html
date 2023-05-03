@@ -4,7 +4,16 @@
     </head>
     <body>
         <h1>Welcome to Phishing Game 2</h1>
-
+            {% if mesgs%}
+            <h1>Score:</h1>
+            {% endif%}
+            <h4>{{mesgs|length}}</h4>
+            {% for mesg in mesgs%}
+            <div class="container">
+                <h4>{{mesg.right}}</h4>
+                <h4>{{mesg.wrong}}</h4>
+            </div>
+            {% endfor%}
         <form method="POST" action="{% url 'index' %}">
             {% csrf_token %}
             <h2>Q1: What is another name for Phishing Attacks?</h2>
@@ -141,7 +150,7 @@
                 <input type="radio" id="python" name="Line" value="right">
                 <label for="python">All of the above</label>
             </p>
-            <input type="submit" name="submit" value="Submit Answers!" />
+            <button type="submit" formaction='phish2'>Submit Answers!</button>
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
         </form>
     </body>
