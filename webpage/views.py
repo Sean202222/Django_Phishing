@@ -103,18 +103,48 @@ def phish1c(request):
 def phish2(request):
     if request.method == "POST":
         form_detail = request.POST
-        print(form_detail)
         score = 0
-        if 'right' in [val for val in form_detail.values()]:
-            score += 1
-            param = {'mesgs': [{"right": "You got right"}]}
-        elif 'wrong' in [val for val in form_detail.values()]:
-            score += 0
-            param = {'mesgs': [{"wrong": "You got wrong"}]}
-        elif 'right' and 'wrong' not in [val for val in form_detail.values()]:
-            score += 0
-            param = {'mesgs': [{"Don't leave any blank"}]}
-        return render(request, 'phish2.html', param)
+        wrong = 0
+        not_selected = 0
+        if 'wrong' or 'right' not in [val for val in form_detail.values()]:
+            not_selected += 1
+            print('why is this happening')
+            
+        for val in form_detail.values():
+            if 'right' in val:
+                score += 1
+            elif 'wrong' in val:
+                wrong += 1
+        
+        print(not_selected)
+        print(score)
+        print(wrong)
+        print(form_detail)
+        
+        if score > 0:
+            param = {'score': f'{score}'}
+            return render (request, 'phish2.html', param)
+        elif not_selected > 0:
+            param = {'mesgs': ["Don't leave any blank"]}
+            return render (request, 'phish2.html', param)
+        elif score == 0 and wrong > 0:
+            param = {'wrong': f'You have choosend all the wrong answers !   '}
+            return render (request, 'phish2.html', param)
+ 
+            
+                
+        # print(form_detail)
+        # score = 0
+        # if 'right' in [val for val in form_detail.values()]:
+        #     score += 1
+        #     param = {'mesgs': [{"right": "You got right"}]}
+        # elif 'wrong' in [val for val in form_detail.values()]:
+        #     score += 0
+        #     param = {'mesgs': [{"wrong": "You got wrong"}]}
+        # elif 'right' and 'wrong' not in [val for val in form_detail.values()]:
+        #     score += 0
+        #     param = {'mesgs': [{"Don't leave any blank"}]}
+        # return render(request, 'phish2.html', param)
     # print("You got " + str(score) + "/" + str(len(form_detail)) + "correct out of 9")
     else:
         return render(request, 'phish2.html', {})

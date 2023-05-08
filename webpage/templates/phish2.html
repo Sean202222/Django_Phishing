@@ -4,14 +4,17 @@
     </head>
     <body>
         <h1>Welcome to Phishing Game 2</h1>
-            {% if mesgs%}
-            <h1>Score:</h1>
+            {% if score%}
+            <h1>You have Selected {{score}} Right Answers!</h1>
             {% endif%}
-            <h4>{{mesgs|length}}</h4>
+            {% if wrong%}
+            <h1>{{wrong}}</h1>
+            {% endif%}
+            <!--<h4>{{mesgs|length}}</h4>-->
             {% for mesg in mesgs%}
             <div class="container">
-                <h4>{{mesg.right}}</h4>
-                <h4>{{mesg.wrong}}</h4>
+                <h4>{{mesg}}</h4>
+                {% comment %} <h4>{{mesg.wrong}}</h4> {% endcomment %}
             </div>
             {% endfor%}
         <form method="POST" action="{% url 'index' %}">
