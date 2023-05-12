@@ -150,5 +150,29 @@ def phish2(request):
         return render(request, 'phish2.html', {})
 
 def phish3(request):
-    return render(request, 'phish3.html', {})
+    if request.method == "POST":
+        form_detail = request.POST
+        score = 0
+        wrong = 0
+        not_selected = 0
+        if 'false' or 'true' not in [val for val in form_detail.values()]:
+            not_selected += 1
+            print('why is this happening')
+        for val in form_detail.values():
+            if 'true' in val:
+                score += 1
+            elif 'false' in val:
+                wrong += 1
+
+        if score > 0:
+            param = {'score': f'{score}'}
+            return render (request, 'phish3.html', param)
+        elif not_selected > 0:
+            param = {'mesgs': ["Don't leave any blank & remember to play audio files"]}
+            return render (request, 'phish3.html', param)
+        elif score == 0 and wrong > 0:
+            param = {'false': f'You have choosend all the wrong answers !   '}
+            return render (request, 'phish3.html', param)
+    else:
+        return render(request, 'phish3.html', {})
 # Create your views here.

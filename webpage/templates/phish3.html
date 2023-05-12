@@ -4,7 +4,19 @@
     </head>
     <body>
         <h1>Welcome to Phishing Game 3</h1>
-
+            {% if score%}
+            <h1>You got {{score}} Correct!</h1>
+            {% endif%}
+            {% if wrong%}
+            <h1>{{wrong}}</h1>
+            {% endif%}
+            <!--<h4>{{mesgs|length}}</h4>-->
+            {% for mesg in mesgs%}
+            <div class="container">
+                <h4>{{mesg}}</h4>
+                {% comment %} <h4>{{mesg.wrong}}</h4> {% endcomment %}
+            </div>
+            {% endfor%}
         <form method="POST" action="{% url 'index' %}">
             {% csrf_token %}
             <h2>Play and listen to the Audio Files below and identify which ones are Vishing Calls.</h2>
@@ -91,7 +103,7 @@
                 <label for="css">No</label>
 
                 <hr>
-            <input type="submit" name="submit" value="Submit" />
+            <input type="submit" name="submit" value="Submit" formaction='phish3'/>
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Exit!</a>
         </form>
     </body>
